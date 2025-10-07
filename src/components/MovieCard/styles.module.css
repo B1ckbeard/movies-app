@@ -1,0 +1,27 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+.otherInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    color: #080423;
+}
+
+.description {
+    color: #080423;
+}
+
+.year {
+    color: #15151547;
+}
+
+.rating {
+    color: #FFD233;
+}
