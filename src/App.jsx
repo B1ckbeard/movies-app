@@ -2,52 +2,45 @@ import { useEffect, useState } from "react";
 import MoviesList from "./components/MoviesList/MoviesList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
-const BASE_URL = import.meta.env.VITE_MOVIES_BASE_API_URL;
-const API_KEY = import.meta.env.VITE_MOVIES_API_KEY;
-
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    "X-API-KEY": API_KEY,
-  },
-};
+import Pagination from "./components/Pagination/Pagination";
+import { getMovies } from "./moviesApi";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
+
+  const fetchMovies = async (currentPage) => {
+    try {
+      const response = await getMovies(currentPage, pageSize);
+      setMovies(response);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    console.log(movies);
-  }, [movies]);
+    fetchMovies(currentPage);
+    console.log(currentPage);
+  }, [currentPage]);
 
-  const getMovies = () => {
-    fetch(`${BASE_URL}/movie?page=10&limit=10`, options)
-      .then((res) => res.json())
-      .then((res) => setMovies(res.docs))
-      .catch((err) => console.error(err));
-  };
-
-  // eslint-disable-next-line no-unused-vars
-  const getRandomMovie = () => {
-    fetch(`${BASE_URL}/movie/random`, options)
-      .then((res) => res.json())
-      .then((res) => getMovieById(res.id))
-      .catch((err) => console.error(err));
-  };
-
-  const getMovieById = (id) => {
-    fetch(`${BASE_URL}/movie/${id}`, options)
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
     <>
       <Header />
-      <button onClick={getMovies}>Get film</button>
-      {movies && <MoviesList movies={movies} />}
+      {movies && <MoviesList movies={movies.docs} />}
+      {movies.pages && (
+        <Pagination
+          currentPage={currentPage}
+          pagesCount={movies.pages - 1}
+          paginationSize={5}
+          handlePageClick={handlePageClick}
+        />
+      )}
       <Footer />
     </>
   );

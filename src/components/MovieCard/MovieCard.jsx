@@ -8,9 +8,6 @@ const MovieCard = ({ movie }) => {
       <h3 className={styles.title}>
         {movie.name ? movie.name : movie.alternativeName}
       </h3>
-      {movie.description && (
-        <p className={styles.description}>{movie.description}</p>
-      )}
       <div className={styles.otherInfo}>
         <p className={styles.year}>{movie.year}г.</p>
         <p className={styles.rating}>{movie.rating.imdb}/10</p>
