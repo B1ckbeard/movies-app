@@ -1,0 +1,38 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+button {
+    min-width: 40px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid #080423;
+    transition: all 0.2s;
+    color: #080423;
+    border-left: none;
+}
+
+.active {
+    background: #080423;
+    color: white;
+    cursor: default;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.firstPageButton {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid #080423;
+}
+
+.lastPageButton {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
