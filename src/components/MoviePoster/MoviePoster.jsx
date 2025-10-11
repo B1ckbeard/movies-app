@@ -8,7 +8,7 @@ const MoviePoster = ({ movie }) => {
       src={
         movie.poster && movie.poster.previewUrl
           ? movie.poster.previewUrl
-          : posters.poster3
+          : posters.poster2
       }
       alt="movie_poster"
     />
