@@ -1,13 +1,15 @@
 .section {
-    height: 100%;
-    padding: 0 60px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 .items {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    grid-template-columns: repeat(5, 250px);
+    justify-content: center;
     gap: 20px;
 }

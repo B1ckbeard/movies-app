@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import MoviesList from "./components/MoviesList/MoviesList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Pagination from "./components/Pagination/Pagination";
 import { getMovies } from "./moviesApi";
+import Carousel from "./components/Carousel/Carousel";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -14,7 +14,7 @@ function App() {
     try {
       const response = await getMovies(currentPage, pageSize);
       setMovies(response);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     fetchMovies(currentPage);
-    console.log(currentPage);
   }, [currentPage]);
 
   const handlePageClick = (pageNumber) => {
@@ -32,15 +31,28 @@ function App() {
   return (
     <>
       <Header />
-      {movies && <MoviesList movies={movies.docs} />}
-      {movies.pages && (
-        <Pagination
-          currentPage={currentPage}
-          pagesCount={movies.pages - 1}
-          paginationSize={5}
-          handlePageClick={handlePageClick}
-        />
-      )}
+      <div className="container">
+        {movies && (
+          <>
+            <h3>Popular movies</h3>
+            <Carousel movies={movies.docs} />
+          </>
+        )}
+        {movies && (
+          <>
+            <h3>Popular serials</h3>
+            <Carousel movies={movies.docs} />
+          </>
+        )}
+        {movies.pages && (
+          <Pagination
+            currentPage={currentPage}
+            pagesCount={movies.pages - 1}
+            paginationSize={5}
+            handlePageClick={handlePageClick}
+          />
+        )}
+      </div>
       <Footer />
     </>
   );

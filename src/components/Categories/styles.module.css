@@ -1,0 +1,28 @@
+.categories {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.active {
+    background-color: #080423;
+    color: white;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 16px 8px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.item {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 16px 8px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}

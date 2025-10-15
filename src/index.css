@@ -7,6 +7,11 @@
   font-family: "Inter", "sans-serif";
 }
 
+.container {
+  min-height: 100%;
+  padding: 30px 60px;
+}
+
 body {
   height: 100vh;
 }
