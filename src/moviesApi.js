@@ -21,6 +21,20 @@ export const getMovies = async (page_number = 1, page_size = 10) => {
   }
 };
 
+// export const getMoviesList = async () => {
+//   try {
+//     const response = await fetch(
+//       `${BASE_URL}/list?page=1&limit=10`,
+//       options
+//     );
+//     return response.json();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// `${BASE_URL}/movie?page=1&limit=10&lists=top250`,
+
 // const getRandomMovie = () => {
 //   fetch(`${BASE_URL}/movie/random`, options)
 //     .then((res) => res.json())
