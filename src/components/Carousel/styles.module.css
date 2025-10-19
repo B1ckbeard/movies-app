@@ -1,9 +1,17 @@
+.carouselSection {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.carouselTitle {
+    margin-bottom: 20px;
+}
+
 .carouselContainer {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    margin-bottom: 30px;
 }
 
 .carousel {
@@ -16,20 +24,6 @@
 
 .carousel::-webkit-scrollbar {
     display: none;
-}
-
-.group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.movieItem {
-    transition: transform 0.2s ease;
-}
-
-.movieItem:hover {
-    transform: scale(1.05);
 }
 
 .arrow {
