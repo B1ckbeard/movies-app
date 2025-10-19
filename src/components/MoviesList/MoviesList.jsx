@@ -1,16 +1,17 @@
+import withSkeleton from "../../hocs/withSkeleton";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./styles.module.css";
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies, type = "item" }) => {
   return (
-    <section className={styles.section}>
-      <ul className={styles.items}>
-        {movies?.map((movie) => (
-          <MovieCard movie={movie} key={movie.id} />
-        ))}
-      </ul>
-    </section>
+    <ul className={`${type === "item" ? styles.items : styles.banners}`}>
+      {movies?.map((movie) => (
+        <MovieCard movie={movie} type={type} key={movie.id} />
+      ))}
+    </ul>
   );
 };
 
-export default MoviesList;
+const MoviesListWithSkeleton = withSkeleton(MoviesList, 10);
+
+export default MoviesListWithSkeleton;

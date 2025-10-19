@@ -1,9 +1,9 @@
 import MoviePoster from "../MoviePoster/MoviePoster";
 import styles from "./styles.module.css";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, type = "item" }) => {
   return (
-    <li className={styles.card}>
+    <li className={`${styles.card} ${type === "item" && styles.item}`}>
       <MoviePoster movie={movie} />
       <h3 className={styles.title}>
         {movie.name ? movie.name : movie.alternativeName}

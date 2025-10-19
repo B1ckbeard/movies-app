@@ -8,8 +8,10 @@
 }
 
 .container {
+  margin: 0 auto;
   min-height: 100%;
-  padding: 30px 60px;
+  max-width: 1400px;
+  padding: 30px 70px;
 }
 
 body {

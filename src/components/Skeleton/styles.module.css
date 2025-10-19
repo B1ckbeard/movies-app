@@ -1,0 +1,27 @@
+.rowList {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.item {
+    min-width: 200px;
+    height: 200px;
+}
+
+.item {
+    background: linear-gradient(-90deg, #f0f0f0 0%, #707070 50%, #f0f0f0 100%);
+    background-size: 400% 400%;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: -135% 0%;
+    }
+}

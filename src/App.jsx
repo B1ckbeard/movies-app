@@ -8,12 +8,14 @@ import Carousel from "./components/Carousel/Carousel";
 function App() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const pageSize = 10;
 
   const fetchMovies = async (currentPage) => {
     try {
       const response = await getMovies(currentPage, pageSize);
       setMovies(response);
+      setIsLoading(false)
       // console.log(response);
     } catch (error) {
       console.log(error);
@@ -21,6 +23,7 @@ function App() {
   };
 
   useEffect(() => {
+    setIsLoading(true)
     fetchMovies(currentPage);
   }, [currentPage]);
 
@@ -32,18 +35,8 @@ function App() {
     <>
       <Header />
       <div className="container">
-        {movies && (
-          <>
-            <h3>Popular movies</h3>
-            <Carousel movies={movies.docs} />
-          </>
-        )}
-        {movies && (
-          <>
-            <h3>Popular serials</h3>
-            <Carousel movies={movies.docs} />
-          </>
-        )}
+        {movies && <Carousel movies={movies.docs} title={"Popular movies"} isLoading={isLoading}/>}
+        {movies && <Carousel movies={movies.docs} title={"Popular serials"} isLoading={isLoading}/>}
         {movies.pages && (
           <Pagination
             currentPage={currentPage}
