@@ -1,15 +1,14 @@
-.items {
+.list {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
 }
 
-.banners {
-    width: 100%;
-    display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
-    grid-template-columns: repeat(5, 250px);
-    justify-content: center;
-    gap: 20px;
+.rowList {
+    flex-direction: row;
+}
 
+.columnList {
+    flex-direction: column;
+    margin-bottom: 30px;
 }

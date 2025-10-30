@@ -1,26 +1,59 @@
 .card {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
     min-width: 200px;
-    height: 100%;
+}
+
+.banner {
+    flex-direction: row;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    gap: 20px;
 }
 
 .item {
-    transition: transform 0.2s ease;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.item:hover {
-    transform: scale(1.05);
+.poster {
+    display: flex;
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: filter 0.3s ease;
+}
+
+.poster:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .otherInfo {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
 .title {
     color: #080423;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .year {
@@ -28,5 +61,5 @@
 }
 
 .rating {
-    color: #FFD233;
+    color: rgb(255, 211, 51);
 }

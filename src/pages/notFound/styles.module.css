@@ -1,0 +1,31 @@
+.notFoundPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    padding: 10px;
+    border: none;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
