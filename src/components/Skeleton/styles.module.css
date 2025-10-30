@@ -5,9 +5,15 @@
     gap: 10px;
 }
 
+.columnList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .item {
     min-width: 200px;
-    height: 200px;
+    height: 296px;
 }
 
 .item {

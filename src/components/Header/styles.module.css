@@ -2,9 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
     width: 100%;
     padding: 12px 24px;
-    background-color: #080423;
+    background-color: #303030;
+    margin-bottom: 30px;
 }
 
 .info {
@@ -15,5 +17,5 @@
 
 .title {
     font-size: 28px;
-    color: #FF3D81;
+    color: white;
 }

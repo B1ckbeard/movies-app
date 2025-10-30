@@ -1,10 +1,13 @@
 import styles from "./styles.module.css";
+import { Link } from "react-router";
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.info}>
-        <h1 className={styles.title}>Movies app</h1>
+        <Link to="/">
+          <h1 className={styles.title}>YeaMovie</h1>
+        </Link>
       </div>
       <input type="text" />
     </header>

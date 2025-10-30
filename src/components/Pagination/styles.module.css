@@ -2,21 +2,26 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
-button {
+.button {
     min-width: 40px;
     height: 30px;
     cursor: pointer;
-    border: 1px solid #080423;
+    border: 1px solid #303030;
     transition: all 0.2s;
-    color: #080423;
+    color: #303030;
     background-color: white;
     border-left: none;
 }
 
+.button:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .active {
-    background: #080423;
+    background: #303030;
     color: white;
     cursor: default;
 }
@@ -27,12 +32,12 @@ button:disabled {
 }
 
 .firstPageButton {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border: 1px solid #080423;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #303030;
 }
 
 .lastPageButton {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }

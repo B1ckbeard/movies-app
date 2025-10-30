@@ -49,13 +49,17 @@ const Pagination = ({
         <button
           onClick={() => handlePageClick(startPage)}
           disabled={currentPage === startPage}
-          className={styles.firstPageButton}
+          className={`${styles.button} ${styles.firstPageButton}`}
         >
           {"<<"}
         </button>
       </li>
       <li>
-        <button onClick={handlePrevPage} disabled={currentPage === startPage}>
+        <button
+          className={styles.button}
+          onClick={handlePrevPage}
+          disabled={currentPage === startPage}
+        >
           {"<"}
         </button>
       </li>
@@ -63,14 +67,20 @@ const Pagination = ({
         <li key={page}>
           <button
             onClick={() => handlePageClick(page)}
-            className={currentPage === page ? styles.active : ""}
+            className={`${styles.button} ${
+              currentPage === page ? styles.active : ""
+            }`}
           >
             {page}
           </button>
         </li>
       ))}
       <li>
-        <button onClick={handleNextPage} disabled={currentPage === pagesCount}>
+        <button
+          className={styles.button}
+          onClick={handleNextPage}
+          disabled={currentPage === pagesCount}
+        >
           {">"}
         </button>
       </li>
@@ -78,7 +88,7 @@ const Pagination = ({
         <button
           onClick={() => handlePageClick(pagesCount)}
           disabled={currentPage === pagesCount}
-          className={styles.lastPageButton}
+          className={`${styles.button} ${styles.lastPageButton}`}
         >
           {">>"}
         </button>
