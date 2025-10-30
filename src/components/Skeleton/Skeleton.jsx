@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 
-const Skeleton = ({ count = 1 }) => {
+const Skeleton = ({ type = 'row', count = 1 }) => {
   return (
     <>
       {count > 1 ? (
-        <ul className={styles.rowList}>
+        <ul className={`${type === 'row' ? styles.rowList : styles.columnList}`}>
           {[...Array(count)].map((_, index) => (
             <li key={index} className={styles.item}></li>
           ))}
