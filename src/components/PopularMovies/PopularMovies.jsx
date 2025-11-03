@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies, getPopularSerials } from "../../moviesApi";
 import Carousel from "../Carousel/Carousel";
+import styles from "./styles.module.css";
 
-const CarouselsList = () => {
+const PopularMovies = () => {
   const [popularFilms, setPopularFilms] = useState([]);
   const [popularSerials, setPopularSerials] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,22 +58,26 @@ const CarouselsList = () => {
     <>
       {!error && (
         <>
-          <Carousel
-            movies={popularFilms}
-            title={"Популярные фильмы"}
-            query={"popular-films"}
-            isLoading={isLoading}
-          />
-          <Carousel
-            movies={popularSerials}
-            title={"Популярные сериалы"}
-            query={"popular-series"}
-            isLoading={isLoading}
-          />
+          <section className={styles.carouselSection}>
+            <Carousel
+              movies={popularFilms}
+              title={"Популярные фильмы"}
+              query={"/category/popular-films"}
+              isLoading={isLoading}
+            />
+          </section>
+          <section className={styles.carouselSection}>
+            <Carousel
+              movies={popularSerials}
+              title={"Популярные сериалы"}
+              query={"/category/popular-series"}
+              isLoading={isLoading}
+            />
+          </section>
         </>
       )}
     </>
   );
 };
 
-export default CarouselsList;
+export default PopularMovies;

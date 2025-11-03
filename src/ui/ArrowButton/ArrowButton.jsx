@@ -1,11 +1,12 @@
 import styles from "./styles.module.css";
 
-const ArrowButton = ({ side, onClick, isFocused = true }) => {
+const ArrowButton = ({ side, offset = 0, onClick, isFocused = true }) => {
   return (
     <button
       className={`${styles.arrow} ${
-        side === "left" ? styles.arrowLeft : styles.arrowRight
-      } ${isFocused ? styles.visible : styles.hidden}`}
+        isFocused ? styles.visible : styles.hidden
+      }`}
+      style={side === "left" ? { left: offset } : { right: offset }}
       onClick={onClick}
     >
       {side === "left" ? "<" : ">"}

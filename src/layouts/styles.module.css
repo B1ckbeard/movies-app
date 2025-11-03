@@ -12,3 +12,9 @@
   padding: 0 70px;
   flex: 1;
 }
+
+@media (width <=800px) {
+  .main {
+    padding: 0;
+  }
+}
