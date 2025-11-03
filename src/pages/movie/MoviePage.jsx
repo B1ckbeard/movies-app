@@ -38,11 +38,11 @@ const MoviePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleGoBack = () => navigate(-1);
+  const handleGoBack = () => navigate(-1) || navigate("/");
 
   return (
     <>
-      <Button text={"< Назад"} onClick={handleGoBack} />
+      <Button text={"< Назад"} onClick={handleGoBack} style={{marginBottom: '30px'}}/>
       {error ? (
         <h2 className={styles.error}>{error}</h2>
       ) : (

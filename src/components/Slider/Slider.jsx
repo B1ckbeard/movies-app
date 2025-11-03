@@ -69,7 +69,7 @@ const Slider = () => {
     <>
       {error && <h2 style={{ textAlign: "center" }}>{error}</h2>}
       {currentMovie && !error && (
-        <div
+        <section
           className={styles.sliderSection}
           onMouseEnter={() => onMouseEnterAndLeave(true)}
           onMouseLeave={() => onMouseEnterAndLeave(false)}
@@ -107,15 +107,17 @@ const Slider = () => {
           <div className={styles.darkenedWrapper}></div>
           <ArrowButton
             side={"left"}
+            offset={20}
             onClick={handlePrevSlide}
             isFocused={isFocused}
           />
           <ArrowButton
             side={"right"}
+            offset={20}
             onClick={handleNextSlide}
             isFocused={isFocused}
           />
-        </div>
+        </section>
       )}
     </>
   );
