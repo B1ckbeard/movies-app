@@ -21,6 +21,31 @@ export const getAllMovies = async (page_number = 1, page_size = 10) => {
   }
 };
 
+export const getMoviesByFilters = async (
+  filters = {},
+  page_number = 1,
+  page_size = 10
+) => {
+  const params = new URLSearchParams();
+
+  Object.entries(filters).forEach(([key, value]) => {
+    if (value) {
+      params.append(key, value.slug || value);
+    }
+  });
+
+  console.log("params: ", params);
+
+  try {
+    const url = `${BASE_URL}/movie?page=${page_number}&limit=${page_size}&${params}`;
+    console.log("url: ", url);
+    const response = await fetch(url, options);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMoviesList = async (page_number = 1, page_size = 30) => {
   try {
     const response = await fetch(

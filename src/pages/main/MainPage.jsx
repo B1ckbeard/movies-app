@@ -1,11 +1,13 @@
-import CarouselsList from "../../components/CarouselsList/CarouselsList";
+import PopularMovies from "../../components/PopularMovies/PopularMovies";
+import MoviesByFilters from "../../components/MoviesByFilters/MoviesByFilters";
 import Slider from "../../components/Slider/Slider";
 
 const MainPage = () => {
   return (
     <>
       <Slider />
-      <CarouselsList />
+      <PopularMovies />
+      <MoviesByFilters />
     </>
   );
 };
