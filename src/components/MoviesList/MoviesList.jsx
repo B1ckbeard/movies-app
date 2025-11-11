@@ -1,22 +1,23 @@
-import { Link } from "react-router";
+import { useDeferredValue } from "react";
 import withSkeleton from "../../hocs/withSkeleton";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./styles.module.css";
 
-const MoviesList = ({ movies, type = "row" }) => {
+const MoviesList = ({ movies, direction = "row", type = "banner" }) => {
+  const list = useDeferredValue(movies);
   return (
     <ul
       className={`${styles.list} ${
-        type === "row" ? styles.rowList : styles.columnList
+        direction === "row" ? styles.rowList : direction === "grid" ? styles.grid : styles.columnList
       }`}
     >
-      {movies?.map((movie) => (
+      {list?.map((movie) => (
         <MovieCard movie={movie} type={type} key={movie.id} />
       ))}
     </ul>
   );
 };
 
-const MoviesListWithSkeleton = withSkeleton(MoviesList, 10);
+const MoviesListWithSkeleton = withSkeleton(MoviesList, 12);
 
 export default MoviesListWithSkeleton;

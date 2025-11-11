@@ -7,26 +7,20 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: end;
     margin-bottom: 20px;
     color: black;
 }
 
-.justifyBetween {
-    justify-content: space-between;
-}
-
-.justifyEnd {
-    justify-content: end;
-}
-
 .carousel {
-    display: flex;
-    align-items: center;
-    width: 100%;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+.carousel > ul {
+    flex-wrap: nowrap;
 }
 
 .carousel::-webkit-scrollbar {
