@@ -1,28 +1,35 @@
 .categories {
     display: flex;
     flex-direction: row;
-    gap: 50px;
-    margin-bottom: 30px;
-    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+
+.button {
+    background-color: white;
+    color: rgba(30, 30, 30, 1);
+    border: 1px solid rgba(30, 30, 30, 1);
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgba(30, 30, 30, 0.2);
 }
 
 .active {
-    background-color: #080423;
+    background-color: rgba(30, 30, 30, 0.8);
     color: white;
-    border: 1px solid black;
-    border-radius: 16px;
-    padding: 16px 8px;
-    display: flex;
-    align-items: center;
-    height: 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: default;
 }
 
-.item {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 16px;
-    padding: 16px 8px;
-    display: flex;
-    align-items: center;
-    height: 40px;
+.active:hover {
+    background-color: rgba(30, 30, 30, 0.8);
 }

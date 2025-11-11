@@ -11,6 +11,7 @@ function App() {
       <Route path="/" element={<BaseLayout />}>
         <Route index element={<MainPage />} />
         <Route path="category/:category" element={<MoviesPage />} />
+        <Route path="search" element={<MoviesPage />} />
         <Route path="movie/:id" element={<MoviePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

@@ -9,13 +9,17 @@
     margin-bottom: 30px;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
 .title {
     font-size: 28px;
     color: white;
+}
+
+.title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.title a:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
