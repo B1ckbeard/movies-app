@@ -4,13 +4,20 @@ const Skeleton = ({ type = 'row', count = 1 }) => {
   return (
     <>
       {count > 1 ? (
-        <ul className={`${type === 'row' ? styles.rowList : styles.columnList}`}>
+        <ul className={`${type === 'row' ? styles.gridList : styles.columnList}`}>
           {[...Array(count)].map((_, index) => (
-            <li key={index} className={styles.item}></li>
+            <li key={index} className={styles.card}>
+              <div className={styles.poster}></div>
+              <div className={styles.title}></div>
+              <div className={styles.info}>
+                <div className={styles.year}></div>
+                <div className={styles.rating}></div>
+              </div>
+            </li>
           ))}
         </ul>
       ) : (
-        <li className={styles.item}></li>
+        <div className={styles.item}></div>
       )}
     </>
   );

@@ -1,82 +1,41 @@
-import { useEffect, useState } from "react";
-import { getPopularMovies, getPopularSerials } from "../../moviesApi";
-import Carousel from "../Carousel/Carousel";
 import styles from "./styles.module.css";
+import { useState } from "react";
+import { useGetMoviesByCategoryQuery } from "../../api/moviesApi";
+import Carousel from "../Carousel/Carousel";
+import Categories from "../Categories/Categories";
+import popularCategoriesType from "../../popularCategoriesType";
 
 const PopularMovies = () => {
-  const [popularFilms, setPopularFilms] = useState([]);
-  const [popularSerials, setPopularSerials] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const pageNumber = 1;
-  const pageSize = 10;
+  const [selectedCategory, setSelectedCategory] = useState(
+    popularCategoriesType[0]
+  );
 
-  const fetchPopularSerials = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const response = await getPopularSerials(pageNumber, pageSize);
-      if (response.error || response.statusCode === 403) throw response;
-      setPopularSerials(response.docs);
-    } catch (error) {
-      console.error("Ошибка:", error);
-      if (error.statusCode === 403) {
-        setError("Ошибка - суточный лимит запросов исчерпан");
-      } else {
-        setError("Ошибка загрузки");
-      }
-    } finally {
-      setIsLoading(false);
-    }
+  const { data, error, isLoading } = useGetMoviesByCategoryQuery({
+    category: selectedCategory.slug,
+  });
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
   };
 
-  const fetchPopularMovies = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const response = await getPopularMovies(pageNumber, pageSize);
-      if (response.error || response.statusCode === 403) throw response;
-      setPopularFilms(response.docs);
-    } catch (error) {
-      console.error("Ошибка:", error);
-      if (error.statusCode === 403) {
-        setError("Ошибка - суточный лимит запросов исчерпан");
-      } else {
-        setError("Ошибка загрузки");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPopularSerials();
-    fetchPopularMovies();
-  }, []);
+  if (error) {
+    return null;
+  }
 
   return (
-    <>
-      {!error && (
-        <>
-          <section className={styles.carouselSection}>
-            <Carousel
-              movies={popularFilms}
-              title={"Популярные фильмы"}
-              query={"/category/popular-films"}
-              isLoading={isLoading}
-            />
-          </section>
-          <section className={styles.carouselSection}>
-            <Carousel
-              movies={popularSerials}
-              title={"Популярные сериалы"}
-              query={"/category/popular-series"}
-              isLoading={isLoading}
-            />
-          </section>
-        </>
-      )}
-    </>
+    <section className={styles.popularSection}>
+      <Categories
+        categories={popularCategoriesType}
+        selectedCategory={selectedCategory}
+        onClick={handleCategoryClick}
+      />
+      <Carousel
+        movies={data?.docs}
+        title={selectedCategory.category}
+        query={`/category/${selectedCategory.slug}`}
+        isLoading={isLoading}
+      />
+    </section>
   );
 };
 

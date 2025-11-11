@@ -6,15 +6,30 @@
 }
 
 .main {
-  max-width: 1400px;
+  max-width: 1440px;
   width: 100%;
   align-self: center;
-  padding: 0 70px;
+  padding: 0 10px;
   flex: 1;
 }
 
-@media (width <=800px) {
+/* Tablet */
+@media (min-width: 768px) {
   .main {
-    padding: 0;
+    padding: 0 24px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .main {
+    padding: 0 50px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .main {
+    padding: 0 70px;
   }
 }

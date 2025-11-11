@@ -9,15 +9,19 @@
     margin-top: auto;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
 .title {
     font-size: 28px;
-    color: gray;
+    color: #303030;
+}
+
+.title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.title a:hover {
+    color: rgba(30, 30, 30, 0.7);
 }
 
 .list {

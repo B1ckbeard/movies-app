@@ -1,0 +1,41 @@
+.poster {
+    display: flex;
+    transition: filter 0.3s ease;
+}
+
+.posterImage {
+    object-fit: cover;
+}
+
+.small {
+    height: 300px;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.large {
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.noPoster {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(30, 30, 30, 0.5);
+}
+
+.noPosterLarge {
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.noPosterDescription {
+    color: white;
+}
+
+.small:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+}

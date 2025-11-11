@@ -1,22 +1,18 @@
-import { useState } from "react";
 import styles from "./styles.module.css";
 
-const categories = ["Популярные фильмы", "Популярные сериалы"];
-
-const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Популярные фильмы");
+const Categories = ({ categories, selectedCategory, onClick }) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => {
         return (
           <button
-            onClick={() => setSelectedCategory(category)}
-            key={category}
-            className={
-              category === selectedCategory ? styles.active : styles.item
-            }
+            onClick={() => onClick?.(category)}
+            key={category.id}
+            className={`${styles.button} ${
+              category === selectedCategory ? styles.active : ""
+            }`}
           >
-            {category}
+            {category.category}
           </button>
         );
       })}

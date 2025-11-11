@@ -1,15 +1,14 @@
 import styles from "./styles.module.css";
 
-const Dropdown = ({ optionList, name, value, onChange }) => {
+const Dropdown = ({ optionList, placeholder, value, onChange }) => {
   return (
     <select
       className={styles.select}
-      name={name}
       value={value}
       onChange={(e) => onChange(e.target.value)}
     >
       <option value="" disabled>
-        {name}
+        {placeholder}
       </option>
       {optionList.map((option) => (
         <option key={option.name || option} value={option.name || option}>
