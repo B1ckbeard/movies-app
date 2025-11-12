@@ -15,6 +15,16 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithErrorHandling = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
+  if (!result) {
+    console.error("Base query returned undefined result");
+    return {
+      error: {
+        data: {
+          userMessage: "Неизвестная ошибка при выполнении запроса",
+        },
+      },
+    };
+  }
   if (result.error) {
     const { status, data } = result.error;
     if (status === 403) {
@@ -57,8 +67,8 @@ const baseQueryWithErrorHandling = async (args, api, extraOptions) => {
         },
       };
     }
-    return result;
   }
+  return result;
 };
 
 export const moviesApi = createApi({

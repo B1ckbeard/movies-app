@@ -3,26 +3,10 @@ import { genresList } from "../genresList";
 import { countriesList } from "../countriesList";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilters, setFilters } from "../store/moviesSlice";
-import { useLazyGetMoviesByFiltersQuery } from "../api/moviesApi";
 
 const useFilters = () => {
   const filters = useSelector((state) => state.movies.filters);
   const dispatch = useDispatch();
-
-  const [fetchMovies, { data, isLoading, error }] =
-    useLazyGetMoviesByFiltersQuery();
-
-  const fetchMoviesByFilters = () => {
-    const apiFilters = { ...filters };
-    if (apiFilters["rating.kp"]) {
-      apiFilters["rating.kp"] = `${apiFilters["rating.kp"]}-10`;
-    }
-    return fetchMovies({
-      page_number: 1,
-      page_size: 30,
-      filters: apiFilters,
-    });
-  };
 
   const updateFilters = (key, value) => {
     dispatch(setFilters({ key, value }));
@@ -30,6 +14,14 @@ const useFilters = () => {
 
   const handleResetFilters = () => {
     dispatch(resetFilters());
+  };
+
+  const getApiFilters = () => {
+    const apiFilters = { ...filters };
+    if (apiFilters["rating.kp"]) {
+      apiFilters["rating.kp"] = `${apiFilters["rating.kp"]}-10`;
+    }
+    return apiFilters;
   };
 
   const yearRange = _.range(2025, 1874);
@@ -69,13 +61,10 @@ const useFilters = () => {
   };
 
   return {
-    movies: data?.docs || [],
-    isLoading,
-    error,
+    getApiFilters,
     handleResetFilters,
     filterConfigs,
     getFilterProps,
-    fetchMoviesByFilters,
   };
 };
 
