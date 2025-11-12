@@ -8,7 +8,6 @@ export const usePagination = () => {
     (state) => state.movies.pages
   );
   const paginationSize = 5;
-  console.log('pagesCount: ',pagesCount)
 
   const handlePageClick = (pageNumber) => {
     dispatch(setPages({ key: "currentPage", value: pageNumber }));
