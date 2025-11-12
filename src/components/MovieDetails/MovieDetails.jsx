@@ -8,7 +8,6 @@ import MoviePoster from "../MoviePoster/MoviePoster";
 
 const MovieDetails = ({ movie }) => {
   const { actors, directors } = formatPersons(movie);
-  console.log(movie);
   return (
     <div className={styles.details}>
       <MoviePoster movie={movie} size="lg"/>
