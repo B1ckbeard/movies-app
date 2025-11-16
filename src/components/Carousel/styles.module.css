@@ -4,12 +4,9 @@
 }
 
 .carouselTitle {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: end;
     margin-bottom: 20px;
-    color: black;
+    text-align: end;
+    font-size: 16px;
 }
 
 .carousel {

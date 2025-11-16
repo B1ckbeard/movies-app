@@ -12,6 +12,7 @@
     background-color: white;
     color: rgba(30, 30, 30, 0.8);
     transition: all 0.1s ease;
+    font-size: 16px;
 }
 
 .searchInput:focus {
@@ -31,6 +32,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 .searchButton:hover {
