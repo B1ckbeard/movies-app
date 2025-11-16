@@ -33,10 +33,16 @@
 
 .title {
     color: #080423;
+    font-size: 30px;
+}
+
+.description {
+    font-size: 18px;
 }
 
 .year, .country, .genres, .length, .person {
     color: #7A7A7A;
+    font-size: 18px;
 }
 
 .rating {
@@ -56,6 +62,7 @@
 
 .similarTitle {
     margin-bottom: 10px;
+    font-size: 24px;
 }
 
 @media (width <= 768px) {

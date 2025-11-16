@@ -4,6 +4,7 @@
     gap: 10px;
     margin-bottom: 20px;
     justify-content: left;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -17,6 +18,7 @@
     height: 40px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 .button:hover {

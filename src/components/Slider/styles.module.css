@@ -32,11 +32,16 @@
 }
 
 .title {
-    width: 200px;
+    width: 250px;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     text-align: center;
+    font-size: 30px;
+}
+
+.name {
+    font-size: 48px;
 }
 
 .pagination {
@@ -70,7 +75,7 @@
 .darkenedWrapper {
     position: absolute;
     bottom: 0;
-    height: 80px;
+    height: 100px;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
     z-index: 2;
