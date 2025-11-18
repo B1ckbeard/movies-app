@@ -12,6 +12,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
 }
 
 .slider {
@@ -86,12 +87,30 @@
 }
 
 .skeleton {
-    text-align: center;
     margin-bottom: 30px;
+    min-width: 200px;
+    height: 600px;
+    background: linear-gradient(-90deg, #f0f0f0 0%, #707070 50%, #f0f0f0 100%);
+    background-size: 400% 400%;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: -135% 0%;
+    }
 }
 
 @media (width <=768px) {
     .sliderSection {
+        height: 300px;
+    }
+
+    .skeleton {
         height: 300px;
     }
 
