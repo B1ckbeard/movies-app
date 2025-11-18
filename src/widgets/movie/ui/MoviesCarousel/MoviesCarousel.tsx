@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router";
 import { Movie } from "@/shared/interfaces";
@@ -21,22 +21,56 @@ const MoviesCarousel = ({
   direction = "grid",
 }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const step = 420;
 
-  const scrollLeft = () => {
+  const checkScrollPosition = useCallback(() => {
     if (!sliderRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+  }, []);
+
+  const scrollLeft = () => {
+    if (!sliderRef.current || !canScrollLeft) return;
     sliderRef.current.scrollBy({ left: -step, behavior: "smooth" });
   };
 
   const scrollRight = () => {
-    if (!sliderRef.current) return;
+    if (!sliderRef.current || !canScrollRight) return;
     sliderRef.current.scrollBy({ left: step, behavior: "smooth" });
   };
 
   const onMouseEnterAndLeave = (value: boolean) => {
     setIsFocused(value);
+  };
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      checkScrollPosition();
+    });
+
+    resizeObserver.observe(slider);
+
+    return () => {
+      resizeObserver.unobserve(slider);
+    };
+  }, [checkScrollPosition]);
+
+  useEffect(() => {
+    checkScrollPosition();
+  }, [movies, checkScrollPosition]);
+
+  const handleScroll = () => {
+    requestAnimationFrame(checkScrollPosition);
   };
 
   return (
@@ -56,7 +90,11 @@ const MoviesCarousel = ({
               {"Показать все >"}
             </Link>
           </p>
-          <div className={styles.carousel} ref={sliderRef}>
+          <div
+            className={styles.carousel}
+            ref={sliderRef}
+            onScroll={handleScroll}
+          >
             <MoviesList
               movies={movies}
               direction={direction}
@@ -70,11 +108,13 @@ const MoviesCarousel = ({
                 side={"left"}
                 onClick={scrollLeft}
                 isFocused={isFocused}
+                disabled={!canScrollLeft}
               />
               <ArrowButton
                 side={"right"}
                 onClick={scrollRight}
                 isFocused={isFocused}
+                disabled={!canScrollRight}
               />
             </>
           )}

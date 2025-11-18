@@ -17,6 +17,8 @@ const MoviesPage = () => {
       <ButtonBack />
       {error ? (
         <ErrorMessage error={error} />
+      ) : !isLoading && movies?.length === 0 ? (
+        <h1 className={styles.title}>Не найдено</h1>
       ) : (
         <>
           <h1 className={styles.title}>{title || "Результаты поиска"}</h1>
