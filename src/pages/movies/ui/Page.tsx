@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 import { useMoviesData } from "@/pages/movies/utils/hooks/useMoviesData";
 import { useQueryParams } from "@/pages/movies/utils/hooks/useQueryParams";
-import { useScrollToTop } from "@/pages/movies/utils/hooks/useScrollToTop";
 import MoviesListWithPagination from "./MoviesListWithPagination/MoviesListWithPagination";
 import ButtonBack from "@/shared/ui/ButtonBack/ButtonBack";
 import ErrorMessage from "@/shared/ui/ErrorMessage/ErrorMessage";
+import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
 
 const MoviesPage = () => {
   const { moviesData, isLoading, error } = useMoviesData();

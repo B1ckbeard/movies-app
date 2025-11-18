@@ -13,10 +13,31 @@ const MoviesInCinemaSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const slideInterval = 5000;
 
   const currentMovie = movies[currentIndex];
+
+  useEffect(() => {
+    if (!movies.length) return;
+
+    const imagesToPreload = [
+      movies[currentIndex]?.backdrop?.url,
+      movies[(currentIndex + 1) % movies.length]?.backdrop?.url,
+      movies[(currentIndex - 1 + movies.length) % movies.length]?.backdrop?.url,
+    ].filter(Boolean);
+
+    imagesToPreload.forEach((url) => {
+      if (!url || loadedImages.has(url)) return;
+
+      const img = new Image();
+      img.onload = () => {
+        setLoadedImages((prev) => new Set(prev).add(url));
+      };
+      img.src = url;
+    });
+  }, [movies, currentIndex, loadedImages]);
 
   const handleNextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -46,7 +67,7 @@ const MoviesInCinemaSlider = () => {
   }
 
   if (isLoading) {
-    return <div className={styles.skeleton}>Загрузка...</div>;
+    return <div className={styles.skeleton}></div>;
   }
 
   if (!currentMovie) {
