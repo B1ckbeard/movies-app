@@ -37,3 +37,7 @@
     opacity: 0;
     visibility: hidden;
 }
+
+.arrow:disabled {
+    opacity: 0.3;
+}

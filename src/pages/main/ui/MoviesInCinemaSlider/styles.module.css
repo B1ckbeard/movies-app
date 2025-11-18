@@ -87,6 +87,7 @@
 
 .skeleton {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 @media (width <=768px) {
